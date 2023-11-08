@@ -6,11 +6,6 @@ import { TurnService } from '../../services/turn.service';
   templateUrl: './turn-page.component.html',
   styleUrls: ['./turn-page.component.scss'],
 })
-export class TurnPageComponent implements OnInit {
-  constructor(private turnService: TurnService) {}
-  ngOnInit(): void {
-    this.turnService.getAllTurnByUser().subscribe((turns) => {
-      console.log('turns', turns);
-    });
-  }
+export class TurnPageComponent {
+
 }

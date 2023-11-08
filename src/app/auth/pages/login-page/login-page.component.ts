@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent {
   public loginForm = new FormGroup({
-    email: new FormControl<string>('', [Validators.required]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required]),
   });
   constructor(private authService: AuthService, private router: Router) {}
@@ -20,7 +20,7 @@ export class LoginPageComponent {
     const { email, password } = this.loginForm.value;
     this.authService.login(email!, password!).subscribe((user) => {
       if (user.role === UserRole.CLIENT) {
-       this.router.navigate(['/turn']);
+       this.router.navigate(['/turn/list']);
       } else if (user.role === UserRole.MECHANIC) {
         console.log('rediretin INSPECTION');
       }
